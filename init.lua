@@ -1,7 +1,7 @@
 local set = vim.o
 set.number = true	-- line number
 set.relativenumber = true	-- relative line number
-set.clipboard = unnamed	-- 系统剪切板
+set.clipboard = 'unnamed'	-- 系统剪切板
 
 -- tab
 set.tabstop = 2	-- tab 占用 2 个空格
@@ -26,3 +26,9 @@ require("config.lazy")
 
 -- colorscheme
 vim.cmd.colorscheme("onedark")
+
+-- lsp config
+local lspconfig = require('lspconfig')
+require('mason').setup()
+require('mason-lspconfig').setup()
+lspconfig.lua_ls.setup{}
