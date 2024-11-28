@@ -5,6 +5,7 @@ set.clipboard = "unnamed" -- 系统剪切板
 
 -- tab
 set.tabstop = 2 -- tab 占用 2 个空格
+set.softtabstop = 2 -- insert mode 下 tab 占 2 个空格
 set.shiftwidth = 2 -- 缩进使用 2 个空格
 set.expandtab = true -- 插入 tab 时转换为相应数量的空格
 
