@@ -115,13 +115,28 @@ end
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 
--- lua
-lspconfig.lua_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
--- js/ts
-lspconfig.ts_ls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach,
-})
+-- -- lua
+-- lspconfig.lua_ls.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+-- -- js/ts
+-- lspconfig.ts_ls.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach,
+-- })
+
+-- code folding
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.foldingRange = {
+	dynamicRegistration = false,
+	lineFoldingOnly = true,
+}
+local language_servers = lspconfig.util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+for _, ls in ipairs(language_servers) do
+	lspconfig[ls].setup({
+		capabilities = capabilities,
+		-- you can add other fields for setting up lsp server in this table
+		on_attach = on_attach,
+	})
+end

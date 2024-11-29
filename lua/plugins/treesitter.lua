@@ -57,11 +57,11 @@ return {
 				},
 			})
 
-			-- code folding 代码折叠(`za`)
-			-- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#folding
-			vim.wo.foldlevel = 20 -- 折叠最大深度
-			vim.wo.foldmethod = "expr"
-			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			-- -- code folding 代码折叠(`za`)
+			-- -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#folding
+			-- vim.wo.foldlevel = 20 -- 折叠最大深度
+			-- vim.wo.foldmethod = "expr"
+			-- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 		end,
 	},
 }
