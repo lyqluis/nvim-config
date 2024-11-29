@@ -21,6 +21,7 @@ return {
 				---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
 				-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
+				-- hightlight
 				highlight = {
 					enable = true,
 
@@ -55,6 +56,12 @@ return {
 					},
 				},
 			})
+
+			-- code folding 代码折叠(`za`)
+			-- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#folding
+			vim.wo.foldlevel = 20 -- 折叠最大深度
+			vim.wo.foldmethod = "expr"
+			vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 		end,
 	},
 }
