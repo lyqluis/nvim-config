@@ -15,19 +15,26 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/cmp-vsnip",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			-- luasnip
+			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
+			-- vsnip
+			-- "hrsh7th/cmp-vsnip",
+			-- "hrsh7th/vim-vsnip",
 		},
 		config = function()
 			-- Set up nvim-cmp.
 			local cmp = require("cmp")
+			local luasnip = require("luasnip")
 
 			cmp.setup({
 				snippet = {
 					-- REQUIRED - you must specify a snippet engine
 					expand = function(args)
-						vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-						-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 						-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 						-- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
@@ -42,33 +49,46 @@ return {
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					-- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 
-					-- super Tab https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#super-tab-like-mapping
+					-- Super-Tab: https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#luasnip
+					["<CR>"] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							if luasnip.expandable() then
+								luasnip.expand()
+							else
+								cmp.confirm({
+									select = true,
+								})
+							end
+						else
+							fallback()
+						end
+					end),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif vim.fn["vsnip#available"](1) == 1 then
-							feedkey("<Plug>(vsnip-expand-or-jump)", "")
-						elseif has_words_before() then
-							cmp.complete()
+						elseif luasnip.locally_jumpable(1) then
+							luasnip.jump(1)
 						else
-							fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+							fallback()
 						end
 					end, { "i", "s" }),
 
-					["<S-Tab>"] = cmp.mapping(function()
+					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
-						elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-							feedkey("<Plug>(vsnip-jump-prev)", "")
+						elseif luasnip.locally_jumpable(-1) then
+							luasnip.jump(-1)
+						else
+							fallback()
 						end
 					end, { "i", "s" }),
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "vsnip" }, -- For vsnip users.
-					-- { name = 'luasnip' }, -- For luasnip users.
+					-- { name = "vsnip" }, -- For vsnip users.
+					{ name = "luasnip" }, -- For luasnip users.
 					-- { name = 'ultisnips' }, -- For ultisnips users.
 					-- { name = 'snippy' }, -- For snippy users.
 				}, {
