@@ -9,6 +9,11 @@ set.softtabstop = 2 -- insert mode 下 tab 占 2 个空格
 set.shiftwidth = 2 -- 缩进使用 2 个空格
 set.expandtab = true -- 插入 tab 时转换为相应数量的空格
 
+-- code folding
+-- set.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- set.foldcolumn = "1"
+set.foldlevel = 99 -- otherwise nvim-ufo will autofolding everything when esc or open file
+
 -- copy 时高亮
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = { "*" },

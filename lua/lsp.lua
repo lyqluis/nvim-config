@@ -126,13 +126,15 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- 	on_attach = on_attach,
 -- })
 
--- code folding
+-- -- code folding
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = {
 	dynamicRegistration = false,
 	lineFoldingOnly = true,
 }
-local language_servers = lspconfig.util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+
+local language_servers = { "lua_ls", "ts_ls" }
+-- local language_servers = lspconfig.util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
 for _, ls in ipairs(language_servers) do
 	lspconfig[ls].setup({
 		capabilities = capabilities,
