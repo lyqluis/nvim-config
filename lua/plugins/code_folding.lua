@@ -28,6 +28,16 @@ local fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate
 end
 
 return {
+	-- code folding indent line
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "VeryLazy",
+		main = "ibl",
+		---@module "ibl"
+		---@type ibl.config
+		opts = {},
+	},
+	-- code folding via ufo
 	{
 		"kevinhwang91/nvim-ufo",
 		dependencies = { "kevinhwang91/promise-async" },
