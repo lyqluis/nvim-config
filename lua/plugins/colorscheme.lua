@@ -1,6 +1,7 @@
 return {
 	{
 		"norcalli/nvim-colorizer.lua",
+		event = "VeryLazy",
 		config = function()
 			require("colorizer").setup()
 		end,
@@ -12,18 +13,20 @@ return {
 			require("onedarkpro").setup({
 				highlights = {
 					Folded = {
-						-- bg = "#5c6370",
+						-- bg = "#5c6370",  -- default onedark grey
 						bg = "#394863",
 					},
 				},
 			})
 		end,
 	},
-	--   {
-	--     'nvim-lualine/lualine.nvim',
-	--     config = function()
-	--         require('lualine').setup {
-	--         }
-	--     end
-	-- },
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			theme = "onedark",
+		},
+		-- config = function()
+		-- 	require("lualine").setup({})
+		-- end,
+	},
 }
