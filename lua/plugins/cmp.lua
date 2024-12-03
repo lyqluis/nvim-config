@@ -20,6 +20,7 @@ return {
 			-- luasnip
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
 			-- vsnip
 			-- "hrsh7th/cmp-vsnip",
 			-- "hrsh7th/vim-vsnip",
@@ -28,6 +29,9 @@ return {
 			-- Set up nvim-cmp.
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+
+			-- luasnip with friendly-snippets
+			require("luasnip.loaders.from_vscode").lazy_load()
 
 			-- nvim-autopairs
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
