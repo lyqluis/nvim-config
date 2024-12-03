@@ -31,17 +31,17 @@ return {
 	-- code folding indent line
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "VeryLazy",
+		event = "BufEnter",
 		main = "ibl",
-		---@module "ibl"
-		---@type ibl.config
+		-- @module "ibl"
+		-- @type ibl.config
 		opts = {},
 	},
 	-- code folding via ufo
 	{
 		"kevinhwang91/nvim-ufo",
 		dependencies = { "kevinhwang91/promise-async" },
-		event = "VeryLazy",
+		event = "BufEnter",
 		config = function()
 			-- vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 			-- vim.o.foldcolumn = '1'

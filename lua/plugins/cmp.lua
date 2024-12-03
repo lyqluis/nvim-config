@@ -11,7 +11,7 @@ end
 return {
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter" },
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
@@ -69,6 +69,7 @@ return {
 							fallback()
 						end
 					end),
+
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
