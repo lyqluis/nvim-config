@@ -25,8 +25,45 @@ return {
 		opts = {
 			theme = "onedark",
 		},
-		-- config = function()
-		-- 	require("lualine").setup({})
-		-- end,
+	},
+	-- dashboard
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			local alpha = require("alpha")
+			local dashboard = require("alpha.themes.dashboard")
+
+			dashboard.section.header.val = {
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                     ]],
+				[[       ████ ██████           █████      ██                     ]],
+				[[      ███████████             █████                             ]],
+				[[      █████████ ███████████████████ ███   ███████████   ]],
+				[[     █████████  ███    █████████████ █████ ██████████████   ]],
+				[[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+				[[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+				[[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+				[[                                                                       ]],
+			}
+
+			dashboard.section.buttons.val = {
+				dashboard.button("e", "  New file", "<cmd>ene <CR>"),
+				dashboard.button("leader t", "  Open directory list"),
+				dashboard.button("leader p", "󰈞  Find file"),
+				dashboard.button("leader o f", "󱋡  Recently opened files"),
+				-- dashboard.button("SPC f r", "  Frecency/MRU"),
+				dashboard.button("leader Shift p", "󰈮  Find word"),
+				-- dashboard.button("SPC f m", "  Jump to bookmarks"),
+				-- dashboard.button("SPC s l", "  Open last session"),
+				dashboard.button("q", "󰅚  Quit NVIM", ":qa<CR>"),
+			}
+
+			alpha.setup(dashboard.opts)
+		end,
 	},
 }
