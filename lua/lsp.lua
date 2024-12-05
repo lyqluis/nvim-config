@@ -27,6 +27,8 @@ local lsp_formatting = function(bufnr)
 			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,
+		-- timeout_ms = 2000,
+		-- async = true,
 	})
 end
 -- if you want to set up formatting on save, you can use this as a callback
