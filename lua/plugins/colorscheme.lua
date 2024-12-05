@@ -66,4 +66,12 @@ return {
 			alpha.setup(dashboard.opts)
 		end,
 	},
+	-- no highlight search
+	{
+		"nvimdev/hlsearch.nvim",
+		event = "BufRead",
+		config = function()
+			require("hlsearch").setup()
+		end,
+	},
 }
