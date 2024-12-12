@@ -78,6 +78,9 @@ local on_attach = function(client, bufnr)
   -- [d, vim.diagnostic.goto_prev()
   -- ]d, vim.diagnostic.goto_next()
   -- <C-W>d, vim.diagnostic.open_float()
+  -- gd, vim.lsp.buf.definition
+  -- gD, vim.lsp.buf.declaration
+  -- K, vim.lsp.buf.hover
   local opts = { noremap = true, silent = true }
   buf_set_keymap("n", "Ï", ":lua vim.lsp.buf.format()<CR>", opts) -- format: shift + alt + f
 
