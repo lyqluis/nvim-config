@@ -123,20 +123,33 @@ capabilities.textDocument.foldingRange = {
 	lineFoldingOnly = true,
 }
 
-local language_servers = {
-	"lua_ls",
-	-- "ts_ls"
-}
--- local language_servers = lspconfig.util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
-for _, ls in ipairs(language_servers) do
-	lspconfig[ls].setup({
-		capabilities = capabilities,
-		-- you can add other fields for setting up lsp server in this table
-		on_attach = on_attach,
-	})
-end
+-- -- local language_servers = lspconfig.util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+-- local language_servers = {
+-- 	"lua_ls",
+-- 	-- "ts_ls"
+-- }
+-- for _, ls in ipairs(language_servers) do
+-- 	lspconfig[ls].setup({
+-- 		capabilities = capabilities,
+-- 		-- you can add other fields for setting up lsp server in this table
+-- 		on_attach = on_attach,
+-- 	})
+-- end
 
--- typscript-tools
+-- lua
+lspconfig.lua_ls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
+})
+
+-- ts/js
 require("typescript-tools").setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
