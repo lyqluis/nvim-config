@@ -59,10 +59,12 @@ local on_attach = function(client, bufnr)
 	-- K, vim.lsp.buf.hover
 	local opts = { noremap = true, silent = true }
 	buf_set_keymap("n", "Ï", "<cmd>Format<CR>", opts) -- format: shift + alt + f
-
+	buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+	buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+	buf_set_keymap("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
 	-- buf_set_keymap("n", "<Enter>", "<Nop>", opts)
-	-- buf_set_keymap("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", opts)
-	-- buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
+	buf_set_keymap("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", opts)
+	buf_set_keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", opts)
 	-- -- buf_set_keymap("n", "gv", "<cmd>Lspsaga peek_definition<CR>", opts)
 	-- buf_set_keymap("n", "<Leader>ga", "<cmd>Lspsaga code_action<CR>", opts)
 	-- -- -- coode action for extract function or variable
