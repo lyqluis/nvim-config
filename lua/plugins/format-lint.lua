@@ -27,7 +27,7 @@ return {
 				-- set up format-on-save
 				format_on_save = {
 					-- pattern = ".lua,*.graphql,*.css,*.html,*.json,*.yaml,*.md,*.gql,*.rs",
-					timeout_ms = 1000,
+					timeout_ms = 5000,
 					lsp_fallback = true,
 				},
 				-- Customize formatters
