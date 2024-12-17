@@ -4,6 +4,12 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- 将 d 操作映射为不保存内容到任何寄存器（配合将全局剪切板关联为系统剪切板）
+map("n", "d", '"_d', { noremap = true, silent = true })
+map("n", "dd", '"_dd', { noremap = true, silent = true })
+map("v", "d", '"_d', { noremap = true, silent = true })
+map("v", "dd", '"_dd', { noremap = true, silent = true })
+
 -- switch between windows
 map("n", "<leader>h", "<C-w>h", opts)
 map("n", "<leader>l", "<C-w>l", opts)
