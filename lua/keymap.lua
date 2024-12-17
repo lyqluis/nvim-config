@@ -11,17 +11,25 @@ map("n", "<leader>j", "<C-w>j", opts)
 map("n", "<leader>k", "<C-w>k", opts)
 map("n", "<leader><Tab>", "<C-w>w", opts)
 
--- move.nvim
+-- move.nvim:
 -- Normal-mode commands
-map("n", "∆", ":MoveLine(1)<CR>", opts)
-map("n", "˚", ":MoveLine(-1)<CR>", opts)
-map("n", "˙", ":MoveHChar(-1)<CR>", opts)
-map("n", "¬", ":MoveHChar(1)<CR>", opts)
+map("n", "∆", ":MoveLine(1)<CR>", opts) -- alt + j
+map("n", "˚", ":MoveLine(-1)<CR>", opts) -- alt + k
+map("n", "˙", ":MoveHChar(-1)<CR>", opts) -- alt + h
+map("n", "¬", ":MoveHChar(1)<CR>", opts) -- alt + l
 map("n", "<leader>wf", ":MoveWord(1)<CR>", opts)
 map("n", "<leader>wb", ":MoveWord(-1)<CR>", opts)
 
 -- Visual-mode commands
-map("v", "∆", ":MoveBlock(1)<CR>", opts)
-map("v", "˚", ":MoveBlock(-1)<CR>", opts)
-map("v", "˙", ":MoveHBlock(-1)<CR>", opts)
-map("v", "¬", ":MoveHBlock(1)<CR>", opts)
+map("v", "∆", ":MoveBlock(1)<CR>", opts) -- alt + j
+map("v", "˚", ":MoveBlock(-1)<CR>", opts) -- alt + k
+map("v", "˙", ":MoveHBlock(-1)<CR>", opts) -- alt + h
+map("v", "¬", ":MoveHBlock(1)<CR>", opts) -- alt + l
+
+-- barbar.nvim:
+map("n", "“", ":BufferPrevious<CR>", opts) -- alt + [
+map("n", "‘", ":BufferNext<CR>", opts) -- alt + ]
+-- Pin/unpin buffer
+map("n", "π", "<Cmd>BufferPin<CR>", opts) -- alt + p
+-- close current buffer
+map("n", "∑", "<Cmd>BufferClose<CR>", opts) -- alt + w

@@ -1,32 +1,21 @@
 return {
+	-- tab
 	{
-		"coffebar/neovim-project",
+		"romgrk/barbar.nvim",
 		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "Shatur/neovim-session-manager" },
-		},
-		lazy = false,
-		priority = 100,
-		keys = {
-			{ "<leader>fp", ":NeovimProjectDiscover<CR>", desc = "find project" },
-			{ "<leader>hp", ":NeovimProjectHistory<CR>", desc = "select a project from recent history" },
-		},
-		opts = {
-			projects = { -- define project roots
-				"~/desktop/*",
-				"~/.config/*",
-			},
-			picker = {
-				type = "telescope", -- or "fzf-lua"
-			},
-			-- Load the most recent session on startup if not in the project directory
-			last_session_on_startup = false,
-			-- Dashboard mode prevent session autoload on startup
-			dashboard_mode = true,
+			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
 		},
 		init = function()
-			-- enable saving the state of plugins in the session
-			vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+			vim.g.barbar_auto_setup = false
 		end,
+		opts = {
+			-- version = "^1.0.0",
+			-- Set the filetypes which barbar will offset itself for
+			sidebar_filetypes = {
+				-- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
+				["neo-tree"] = true,
+			},
+		},
 	},
 }

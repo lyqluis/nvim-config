@@ -50,7 +50,7 @@ return {
 				[[                                                                       ]],
 				[[                                                                       ]],
 			}
-
+			-- TODO: add nvim-project
 			dashboard.section.buttons.val = {
 				dashboard.button("e", "  New file", "<cmd>ene <CR>"),
 				dashboard.button("leader t", "  Open directory list"),

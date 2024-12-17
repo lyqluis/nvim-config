@@ -7,16 +7,19 @@ vim.lsp.set_log_level("ERROR")
 require("mason").setup()
 require("mason-lspconfig").setup()
 
+-- this function conflicts with barbar.nvim when closing tab, so commented out temporarily
 -- fallback if lsp exit suddenly
-vim.api.nvim_create_autocmd("LspDetach", {
-	callback = function(args)
-		-- print("detaching LSP..") local bufname = vim.fn.bufname(args.buf) if
-		-- bufname:match("%.go$") then print("bufname " .. bufname) print("restarting
-		-- LSP..")
-		vim.cmd("LspStart")
-		-- end
-	end,
-})
+-- vim.api.nvim_create_autocmd("LspDetach", {
+-- 	callback = function(args)
+-- 		print("detaching LSP..")
+-- 		-- local bufname = vim.fn.bufname(args.buf)
+-- 		-- if bufname:match("%.go$") then
+-- 		-- 	print("bufname " .. bufname)
+-- 		-- 	print("restarting LSP..")
+-- 		vim.cmd("LspStart")
+-- 		-- end
+-- 	end,
+-- })
 
 -- if you want to set up formatting on save, you can use this as a callback
 -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
