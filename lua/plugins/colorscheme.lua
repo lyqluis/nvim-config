@@ -50,16 +50,16 @@ return {
 				[[                                                                       ]],
 				[[                                                                       ]],
 			}
-			-- TODO: add nvim-project
 			dashboard.section.buttons.val = {
 				dashboard.button("e", "  New file", "<cmd>ene <CR>"),
-				dashboard.button("leader t", "  Open directory list"),
-				dashboard.button("leader p", "󰈞  Find file"),
-				dashboard.button("leader o f", "󱋡  Recently opened files"),
-				-- dashboard.button("SPC f r", "  Frecency/MRU"),
-				dashboard.button("leader Shift p", "󰈮  Find word"),
+				dashboard.button("<leader> t", "  Open directory list"),
+				dashboard.button("<leader> p", "󰈞  Find file"),
+				dashboard.button("<leader> o f", "󱋡  Recently opened files"),
+				dashboard.button("<leader> Shift p", "󰈮  Find word"),
 				-- dashboard.button("SPC f m", "  Jump to bookmarks"),
-				-- dashboard.button("SPC s l", "  Open last session"),
+				dashboard.button("<leader> h p", "  Frecency/MRU"),
+				dashboard.button("<leader> l r", "  Open last session"),
+				dashboard.button("<leader> f p", "  Find project"),
 				dashboard.button("q", "󰅚  Quit NVIM", ":qa<CR>"),
 			}
 

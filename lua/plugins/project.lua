@@ -10,6 +10,7 @@ return {
 		keys = {
 			{ "<leader>fp", ":NeovimProjectDiscover<CR>", desc = "find project" },
 			{ "<leader>hp", ":NeovimProjectHistory<CR>", desc = "select a project from recent history" },
+			{ "<leader>lr", ":NeovimProjectLoadRecent<CR>", desc = "open the previous session" },
 		},
 		opts = {
 			projects = { -- define project roots
