@@ -35,6 +35,7 @@ return {
 			},
 		},
 		config = function()
+			vim.api.nvim_set_hl(0, "NeoTreeCursorLine", { bg = "#394863" })
 			require("neo-tree").setup({
 				-- default config: https://github.com/nvim-neo-tree/neo-tree.nvim/blob/main/lua/neo-tree/defaults.lua
 				close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
@@ -46,6 +47,11 @@ return {
 				},
 				window = {
 					width = 20,
+				},
+				filesystem = {
+					follow_current_file = {
+						enabled = true,
+					},
 				},
 			})
 		end,

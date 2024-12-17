@@ -17,6 +17,9 @@ return {
 						bg = "#394863",
 					},
 				},
+				-- options = {
+				-- 	cursorline = true,
+				-- },
 			})
 		end,
 	},
