@@ -17,7 +17,10 @@ map("n", "<leader>j", "<C-w>j", opts)
 map("n", "<leader>k", "<C-w>k", opts)
 map("n", "<leader><Tab>", "<C-w>w", opts)
 
--- move.nvim:
+-- conform: formatter
+map("n", "Ï", "<cmd>Format<CR>", opts) -- format: shift + alt + f
+
+-- move.nvim: move line with alt + j/k/l/h
 -- Normal-mode commands
 map("n", "∆", ":MoveLine(1)<CR>", opts) -- alt + j
 map("n", "˚", ":MoveLine(-1)<CR>", opts) -- alt + k

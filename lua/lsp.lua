@@ -61,7 +61,6 @@ local on_attach = function(client, bufnr)
 	-- gD, vim.lsp.buf.declaration
 	-- K, vim.lsp.buf.hover
 	local opts = { noremap = true, silent = true }
-	buf_set_keymap("n", "Ï", "<cmd>Format<CR>", opts) -- format: shift + alt + f
 	buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
 	buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
 	buf_set_keymap("n", "<leader>o", "<cmd>Lspsaga outline<cr>", opts)
@@ -180,4 +179,10 @@ autocmd("BufWritePre", {
 		-- vim.cmd("TSToolsOrganizeImports sync")
 		require("conform").format({ bufnr = args.buf })
 	end,
+})
+
+-- css
+lspconfig.cssls.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
 })
