@@ -9,6 +9,10 @@ set.softtabstop = 2 -- insert mode 下 tab 占 2 个空格
 set.shiftwidth = 2 -- 缩进使用 2 个空格
 set.expandtab = true -- 插入 tab 时转换为相应数量的空格
 
+-- intelligent search
+set.ignorecase = true -- 搜索时忽略大小写
+set.smartcase = true -- 智能大小写匹配
+
 -- code folding
 -- set.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 -- set.foldcolumn = "1"
